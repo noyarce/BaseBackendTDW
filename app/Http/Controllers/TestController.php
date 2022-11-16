@@ -12,9 +12,14 @@ class TestController extends Controller
     {
         $this->testRepo = $testRepo;
     }
-
-    public function listarLibros(Request $request)
+ 
+    public function listarLibros()
     {
         return $this->testRepo->listarLibros();
+    }
+
+      public function guardarLibros(Request $request)
+    {
+        return $this->testRepo->guardarLibros($request);
     }
 }

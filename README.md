@@ -5,6 +5,8 @@ este proyecto base es creado utilizando los comandos que fueron obtenidos de la 
 composer 
 php 8
 
+apt-get install php-mysql
+
 **crear proyecto**
 
 composer create-project laravel/laravel **nombreDelProyecto**
@@ -43,6 +45,9 @@ creamos un usuario:
 (aca le damos una contraseña al usuario)
 
 > GRANT ALL ON *.* TO '**usuario**'@'localhost';
+o GRANT ALL PRIVILEGES ON *.* TO '**usuario**'@'localhost' WITH GRANT OPTION;
+
+> create database **nombreBD** ; 
 
 (y le damos permiso de acceso a todos los permisos de mysql y las bd, ojo no es lo mas recomendable darle permisos completos, pero en este caso como estamos iniciando haremos algo basico sin limitaciones)
 

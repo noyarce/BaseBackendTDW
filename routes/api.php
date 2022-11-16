@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+
+Route::prefix('/testing')->group(function () use ($router) {
+    $router->get('/getTest', [TestController::class, 'listarLibros']);
+    $router->post('/postTest', [TestController::class, 'listarLibros']);
 });

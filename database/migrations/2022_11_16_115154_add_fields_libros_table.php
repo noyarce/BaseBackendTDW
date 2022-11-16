@@ -13,8 +13,9 @@ class AddFieldsLibrosTable extends Migration
      */
     public function up()
     {
-         Schema::table('libros', function (Blueprint $table) {
+        Schema::table('libros', function (Blueprint $table) {
             $table->string('libr_autor', 255)->nullable();
+            $table->string('libr_titulo', 255)->nullable();
         });
     }
 
@@ -27,6 +28,8 @@ class AddFieldsLibrosTable extends Migration
     {
         Schema::table('libros', function (Blueprint $table) {
             $table->dropColumn('libr_autor');
+            $table->dropColumn('libr_titulo');
+
         });
     }
 }
