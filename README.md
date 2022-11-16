@@ -1,64 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Introducción 
+este proyecto base es creado utilizando los comandos que fueron obtenidos de la documentacion oficial de laravel y de mysql inicialmente.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Requisitos minimos**
+composer 
+php 8
 
-## About Laravel
+**crear proyecto**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+composer create-project laravel/laravel **nombreDelProyecto**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+una vez creado el proyecto se procede con los siguientes comandos:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1.- cd/**nombreDelProyecto**
+2.- cp .env.example .env --> esto para crear un archivo con las variables de entorno. es necesario para darle al sistema las configuraciones basicas de base de datos, ambiente en que se encuentra etc.
 
-## Learning Laravel
+3.- php artisan key:generate --> para generar una key del sistema tenga una key de encriptación. 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+4.- al abrir el archivo .env podemos ver las configuraciones de nuestro sistema, las mas usadas en nuestro caso seran: 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+LOG_CHANNEL=stack < -- nos dirá como se almacenarán los logs que hagamos en sistema. se recomienda usar el canal "daily"
 
-## Laravel Sponsors
+DB_CONNECTION=mysql <-- motor de bd a utilizar
+DB_HOST=127.0.0.1 <-- donde está la bd, en este caso será nuestro equipo local
+DB_PORT=3306 <-- puerto al cual acceder a la bd. se mantiene valor por defecto.
+DB_DATABASE=laravel <-- nombre de la bd a la cual accederemos. en este caso crearemos una bd laravel en local
+DB_USERNAME=root <-- nombre del usuario de mysql con el cual accederemos a la bd. nosotros la modificaremos mas abajo
+DB_PASSWORD= <-- aqui va la password del user de mysql, por defecto viene vacio, si uds setearon una clave deben incluirla aqui, si lleva caracteres especiales tipo # o similar, se recomienda usar comillas dobles "" para definir este parametro.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+este grupo de configuraciones son para la base de datos, nosotros utilizaremos mysql. 
+ 
+**para la bd** 
 
-### Premium Partners
+ingresamos a mysql por consola escribiendo:
+sudo mysql -u root -p 
+(le decimos que inicie mysql con el -u le indicamos el usuario y -p para decir que lleva password, la cual pedirá después).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+creamos un usuario: 
+> CREATE USER '**usuario**'@'localhost' IDENTIFIED BY 'password';
+(donde **usuario** será el nombre que le demos) 
 
-## Contributing
+> SET PASSWORD FOR '**usuario**'@'localhost' = **laclave**;
+(aca le damos una contraseña al usuario)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> GRANT ALL ON *.* TO '**usuario**'@'localhost';
 
-## Code of Conduct
+(y le damos permiso de acceso a todos los permisos de mysql y las bd, ojo no es lo mas recomendable darle permisos completos, pero en este caso como estamos iniciando haremos algo basico sin limitaciones)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+con esto en mente podemos modificar nuestro .env para darle usuario, contraseña y bd.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+##primeros pasos##
 
-## License
+el patron a utilizar en cuanto a desarrollo es el patron repositorio. para ello debemos crear nuestros controladores, los cuales van a recibir las peticiones y llamaran a los repositorios locales que serán los encargados de entregar información.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+para crear un controlador utilizaremos el comando
+ > php artisan make:controller **NombreController** 
+ 
+ se recomienda usar CamelCase para nombrar los archivos de controladores e indicar en el final del nombre que son de este tipo. ejemplo: 
+ **ContactoController** o **ComentarioController** 
+
+ una vez creado el controller podemos crear los modelos y las migraciones para consultar información; en este caso crearemos el modelo "Libro" y "Comentario" 
+
+ > php artisan make:model Libro -m
+ > php artisan make:model Comentario -m
+
+el flag -m le indica que debe crear también la migración de esta tabla.
+
+
+con esto tenemos la base para crear nuestros modelos y migraciones. 
+
+
+para agregar una foreign key a una migracion ya creada
+
+php artisan make:migration add_fk_**nombre_tabla_original**_table 
+
+para agregar campos olvidados a una migracion ya creada
+
+php artisan make:migration add_fields_**nombre_tabla_original**_table
