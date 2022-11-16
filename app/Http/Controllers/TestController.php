@@ -22,4 +22,10 @@ class TestController extends Controller
     {
         return $this->testRepo->guardarLibros($request);
     }
+
+
+      public function filtrarLibros(Request $request)
+    {
+        return $this->testRepo->filtrarLibros($request);
+    }
 }

@@ -13,6 +13,16 @@ class TestRepository
         $libros = Libro::all();
         return response()->json(["libros" => $libros], Response::HTTP_OK);
     }
+    public function filtrarLibros($request){
+       $libros = Libro::where('libr_autor',$request->autor)
+            ->where('id',$request->id)
+       ->get();
+     //  $libros = Libro::find($request->id);
+
+        return response()->json(["libros" => $libros],
+         Response::HTTP_OK);
+      
+    }
 
     public function guardarLibros($request)
     {
