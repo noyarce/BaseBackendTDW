@@ -23,5 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('/testing')->group(function () use ($router) {
     $router->get('/getTest', [TestController::class, 'listarLibros']);
-    $router->post('/postTest', [TestController::class, 'listarLibros']);
+    $router->post('/postTest', [TestController::class, 'guardarLibros']);
 });
