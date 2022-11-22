@@ -17,7 +17,8 @@ class Comentario extends Model
         "come_texto"
     ];
 
-    // public function libro(){
-    //     return $this->belongsTo(Libro::class, "id");
-    // }
+    public function libro()
+    {
+        return $this->belongsTo(Libro::class, "libro_id");
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comentario;
+use App\Models\Libro;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Libro::factory(20)->create();
+
+
+        // $libro = Libro::factory()->create();
+
+        // $posts = Comentario::factory()
+        //     ->count(10)
+        //     ->for($libro)
+        //     ->create();
+
+
     }
 }

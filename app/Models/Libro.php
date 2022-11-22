@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Libro extends Model
 {
-use HasFactory;
+    use HasFactory;
 
     protected $table = 'libros';
     protected $primaryKey = 'id';
@@ -18,9 +18,8 @@ use HasFactory;
         "libr_titulo"
     ];
 
-    // public function comentario(){
-    //     return $this->hasMany(Comentario::class, "id");
-    // }
+    public function comentario()
+    {
+        return $this->hasMany(Comentario::class);
+    }
 }
-
-

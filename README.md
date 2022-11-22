@@ -82,3 +82,15 @@ php artisan make:migration add_fk_**nombre_tabla_original**_table
 para agregar campos olvidados a una migracion ya creada
 
 php artisan make:migration add_fields_**nombre_tabla_original**_table
+
+**Seeders**
+
+para poblar nuestra bd y hacer pruebas crearemos uno o varios seeders. 
+con el comando
+> php artisan make:factory LibroFactory --model=Libro 
+
+
+le indicamos que cree un factory. 
+factory se encarga de crear nuestros datos falsos, seeder se encarga de cargar estos datos en bd. 
+reutilizaremos el archivo DatabaseSeeder.php que viene por defecto para hacer la carga de la información. 
+
