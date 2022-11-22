@@ -15,16 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Libro::factory(20)->create();
+       // Libro::factory(20)->create();
 
 
-        // $libro = Libro::factory()->create();
+        $libro = Libro::factory()->create();
 
-        // $posts = Comentario::factory()
-        //     ->count(10)
-        //     ->for($libro)
-        //     ->create();
-
-
+        $posts = Comentario::factory()
+            ->count(10)
+            ->for($libro)
+            ->create();
     }
 }

@@ -54,7 +54,7 @@ o GRANT ALL PRIVILEGES ON *.* TO '**usuario**'@'localhost' WITH GRANT OPTION;
 con esto en mente podemos modificar nuestro .env para darle usuario, contraseña y bd.
 
 
-##primeros pasos##
+## primeros pasos ##
 
 el patron a utilizar en cuanto a desarrollo es el patron repositorio. para ello debemos crear nuestros controladores, los cuales van a recibir las peticiones y llamaran a los repositorios locales que serán los encargados de entregar información.
 
@@ -87,6 +87,7 @@ php artisan make:migration add_fields_**nombre_tabla_original**_table
 
 para poblar nuestra bd y hacer pruebas crearemos uno o varios seeders. 
 con el comando
+
 > php artisan make:factory LibroFactory --model=Libro 
 
 
@@ -94,3 +95,5 @@ le indicamos que cree un factory.
 factory se encarga de crear nuestros datos falsos, seeder se encarga de cargar estos datos en bd. 
 reutilizaremos el archivo DatabaseSeeder.php que viene por defecto para hacer la carga de la información. 
 
+
+https://github.com/FakerPHP/Faker
