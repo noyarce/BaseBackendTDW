@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Genero;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GeneroFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
+
+    protected $model = Genero::class;
+
     public function definition()
     {
         return [
-            //
+            'gen_categoria' => 'terror',
+
         ];
     }
 }

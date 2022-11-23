@@ -17,4 +17,9 @@ class Genero extends Model
         "gen_categoria"
     ];
 
+ public function comentario() 
+    {
+        return $this->hasMany(Libro::class);
+    }
+
 }

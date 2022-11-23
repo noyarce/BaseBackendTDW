@@ -3,20 +3,36 @@ este proyecto base es creado utilizando los comandos que fueron obtenidos de la 
 
 **Requisitos minimos**
 composer 
-php 8
+php 8 
+extensiones de php que pueden faltar:
 
-apt-get install php-mysql
+mysql : apt-get install php-mysql
 
 **crear proyecto**
+para crear el proyecto se debe tener composer y php8 instalados. 
 
-composer create-project laravel/laravel **nombreDelProyecto**
+> composer create-project laravel/laravel **nombreDelProyecto**
+
+si utilizan este proyecto base, pueden clonarlo y para instalar las librerias necesarias deben ejecutar el comando 
+
+> composer install
 
 una vez creado el proyecto se procede con los siguientes comandos:
 
-1.- cd/**nombreDelProyecto**
-2.- cp .env.example .env --> esto para crear un archivo con las variables de entorno. es necesario para darle al sistema las configuraciones basicas de base de datos, ambiente en que se encuentra etc.
+1.- 
+> cd/**nombreDelProyecto** 
 
-3.- php artisan key:generate --> para generar una key del sistema tenga una key de encriptación. 
+esto para entrar el la carpeta del proyecto.
+
+2.-
+> cp .env.example .env 
+
+esto para crear un archivo con las variables de entorno. es necesario para darle al sistema las configuraciones basicas de base de datos, ambiente en que se encuentra etc. se recomienda de forma extrema no subir sus archivos .env a sus repositorios ya que ese archivo cuenta con información sensible de su proyecto.
+
+3.- 
+> php artisan key:generate 
+
+para generar una key del sistema tenga una key de encriptación. 
 
 4.- al abrir el archivo .env podemos ver las configuraciones de nuestro sistema, las mas usadas en nuestro caso seran: 
 
@@ -45,11 +61,15 @@ creamos un usuario:
 (aca le damos una contraseña al usuario)
 
 > GRANT ALL ON *.* TO '**usuario**'@'localhost';
-o GRANT ALL PRIVILEGES ON *.* TO '**usuario**'@'localhost' WITH GRANT OPTION;
+o
+> GRANT ALL PRIVILEGES ON *.* TO '**usuario**'@'localhost' WITH GRANT OPTION;
+
+con esto le damos los permisos a nuestro usuario para acceder a las bases de datos de nuestro equipo local.
+( ojo no es lo mas recomendable darle permisos completos, pero en este caso como estamos iniciando haremos algo basico sin limitaciones)
 
 > create database **nombreBD** ; 
+creamos la base de datos en nuestro equipo finalmente.
 
-(y le damos permiso de acceso a todos los permisos de mysql y las bd, ojo no es lo mas recomendable darle permisos completos, pero en este caso como estamos iniciando haremos algo basico sin limitaciones)
 
 con esto en mente podemos modificar nuestro .env para darle usuario, contraseña y bd.
 
@@ -58,6 +78,7 @@ con esto en mente podemos modificar nuestro .env para darle usuario, contraseña
 
 el patron a utilizar en cuanto a desarrollo es el patron repositorio. para ello debemos crear nuestros controladores, los cuales van a recibir las peticiones y llamaran a los repositorios locales que serán los encargados de entregar información.
 
+
 para crear un controlador utilizaremos el comando
  > php artisan make:controller **NombreController** 
  
@@ -65,23 +86,27 @@ para crear un controlador utilizaremos el comando
  **ContactoController** o **ComentarioController** 
 
  una vez creado el controller podemos crear los modelos y las migraciones para consultar información; en este caso crearemos el modelo "Libro" y "Comentario" 
+ el modelo es nuestro "puente" entre el sistema y la base de datos, las migraciones son las encargadas de crear las tablas en la bd. 
 
  > php artisan make:model Libro -m
  > php artisan make:model Comentario -m
 
 el flag -m le indica que debe crear también la migración de esta tabla.
 
+con esto tenemos la base para crear nuestros modelos y migraciones.
 
-con esto tenemos la base para crear nuestros modelos y migraciones. 
+en los archivos  Libro y Comentario estarán las explicaciones de cada caso. 
 
+**Comandos utiles para cada caso**
+>php artisan make:migration add_fk_**nombre_tabla_original**_table 
 
 para agregar una foreign key a una migracion ya creada
 
-php artisan make:migration add_fk_**nombre_tabla_original**_table 
+>php artisan make:migration add_fields_**nombre_tabla_original**_table
 
 para agregar campos olvidados a una migracion ya creada
 
-php artisan make:migration add_fields_**nombre_tabla_original**_table
+
 
 **Seeders**
 
@@ -94,6 +119,6 @@ con el comando
 le indicamos que cree un factory. 
 factory se encarga de crear nuestros datos falsos, seeder se encarga de cargar estos datos en bd. 
 reutilizaremos el archivo DatabaseSeeder.php que viene por defecto para hacer la carga de la información. 
-
-
 https://github.com/FakerPHP/Faker
+https://laravel.com/docs/8.x/database-testing#defining-model-factories
+
