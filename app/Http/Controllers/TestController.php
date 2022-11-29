@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LibroRequest;
 use App\Repositories\TestRepository;
 use Illuminate\Http\Request;
 
@@ -12,19 +13,19 @@ class TestController extends Controller
     {
         $this->testRepo = $testRepo;
     }
- 
+
     public function listarLibros()
     {
         return $this->testRepo->listarLibros();
     }
 
-      public function guardarLibros(Request $request)
+    public function guardarLibros(LibroRequest $request)
     {
         return $this->testRepo->guardarLibros($request);
     }
 
 
-      public function filtrarLibros(Request $request)
+    public function filtrarLibros(Request $request)
     {
         return $this->testRepo->filtrarLibros($request);
     }

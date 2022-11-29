@@ -19,7 +19,7 @@ class TestRepository
     {
         Log::info(["el request--> " => $request->all()]);
 
-        $libros = Libro::where('id',$request->id)->with(['genero', 'comentario'])
+        $libros = Libro::where('id', $request->id)->with(['genero', 'comentario'])
             ->get();
 
         return response()->json(
@@ -33,7 +33,7 @@ class TestRepository
         $libros = new Libro();
         $libros->libr_autor = $request->autor;
         $libros->libr_titulo = $request->titulo;
-        $libros->genero_id= $request->genero_id;
+        $libros->genero_id = $request->genero_id;
         $libros->save();
         return response()->json(["libros" => $libros], Response::HTTP_OK);
     }

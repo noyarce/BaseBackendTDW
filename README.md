@@ -122,3 +122,6 @@ reutilizaremos el archivo DatabaseSeeder.php que viene por defecto para hacer la
 https://github.com/FakerPHP/Faker
 https://laravel.com/docs/8.x/database-testing#defining-model-factories
 
+
+
+https://laravel.com/docs/8.x/validation#available-validation-rules
