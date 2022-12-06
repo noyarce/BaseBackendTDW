@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 
 class LibroRequest extends FormRequest
 {
-  
+
     public function authorize()
     {
         return true;
@@ -23,8 +23,8 @@ class LibroRequest extends FormRequest
     public function rules()
     {
         return [
-            "autor" => "required",
-            "titulo" => "required|max:50",
+            "autor" => "required|string",
+            "titulo" => "required|max:50|unique",
             "genero_id" => "required|exists:generos,id",
         ];
     }

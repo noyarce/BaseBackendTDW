@@ -29,4 +29,11 @@ class TestController extends Controller
     {
         return $this->testRepo->filtrarLibros($request);
     }
+
+    public function actualizarLibro(Request $request){
+        return $this->testRepo->actualizarLibro($request);
+    }
+    public function actualizarLibroDos(Request $request){
+        return $this->testRepo->actualizarLibroDos($request);
+    }
 }
