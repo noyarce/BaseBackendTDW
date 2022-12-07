@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Jobs\JobEjemplo;
 use App\Models\Genero;
 use App\Models\Libro;
 use Exception;
@@ -79,6 +80,16 @@ class TestRepository
             $libros = Libro::find($request->id)->delete();
 
             return response()->json(["libros" => $libros], Response::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function ejemploJob($request)
+    {
+        try {
+            JobEjemplo::dispatch($request->all())->onQueue('ejemplo');
+            return response()->json(["se esta ejecutando"], Response::HTTP_OK);
         } catch (Exception $e) {
             return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
         }

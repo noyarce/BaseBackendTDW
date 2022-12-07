@@ -123,5 +123,28 @@ https://github.com/FakerPHP/Faker
 https://laravel.com/docs/8.x/database-testing#defining-model-factories
 
 
+**Validacion de Request**
 
 https://laravel.com/docs/8.x/validation#available-validation-rules
+
+**Jobs**
+
+>sudo apt install redis-server 
+
+ instalacion de redis
+
+>sudo systemctl status redis
+
+chequeo de status
+
+
+https://laravel.com/docs/8.x/horizon
+
+
+> composer require predis/predis
+
+REDIS_CLIENT= predis <-- incluir en .env
+
+> php artisan horizon 
+
+activa redis para pruebas

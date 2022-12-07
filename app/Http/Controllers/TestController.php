@@ -33,7 +33,7 @@ class TestController extends Controller
     public function actualizarLibro(Request $request){
         return $this->testRepo->actualizarLibro($request);
     }
-    public function actualizarLibroDos(Request $request){
-        return $this->testRepo->actualizarLibroDos($request);
+    public function ejemploJob(Request $request){
+        return $this->testRepo->ejemploJob($request);
     }
 }
