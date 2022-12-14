@@ -170,3 +170,8 @@ https://www.laravelcode.com/post/laravel-8-sanctum-api-authentication-tutorial
 
 
 https://laracasts.com/discuss/channels/laravel/sanctum-protected-routes-returns-http-error-405-method-not-allowed-instead-of-401
+
+
+traits. 
+
+https://laravel.com/docs/8.x/http-client

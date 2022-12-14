@@ -77,9 +77,13 @@ class TestRepository
     public function eliminarLibro($request)
     {
         try {
-            $libros = Libro::find($request->id)->delete();
+            $libro = Libro::find($request->id);
+            if(!$libro){
+                throw new Exception("PARA LOCO !!!");
+            }
+            $libro->delete();
 
-            return response()->json(["libros" => $libros], Response::HTTP_OK);
+            return response()->json(["eliminados"=>"chao"], Response::HTTP_OK);
         } catch (Exception $e) {
             return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
         }
