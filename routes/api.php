@@ -24,11 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'auth'], function () use ($router) {
     $router->post('login', [AuthController::class, 'login'])->name('login');
     $router->post('signup', [AuthController::class, 'signUp']);
-
-    Route::group(['middleware' => 'auth:api'], function () use ($router) {
-        $router->get('logout', [AuthController::class, 'logout']);
-        $router->get('user',  [AuthController::class, 'user']);
-    });
+    $router->get('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
 Route::prefix('/testing')->group(function () use ($router) {
