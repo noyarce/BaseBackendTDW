@@ -148,3 +148,25 @@ REDIS_CLIENT= predis <-- incluir en .env
 > php artisan horizon 
 
 activa redis para pruebas
+
+
+https://laravel.com/docs/8.x/scheduling
+
+authentication:
+
+https://laravel.com/docs/8.x/authentication
+
+https://laravel.com/docs/8.x/passport#installation
+
+composer require laravel/passport
+php artisan migrate
+php artisan passport:install
+php artisan passport:keys
+
+https://www.twilio.com/blog/build-restful-api-php-laravel-sanctum
+https://programacionymas.com/blog/api-rest-laravel-passport
+https://www.laravelcode.com/post/laravel-8-sanctum-api-authentication-tutorial
+
+
+
+https://laracasts.com/discuss/channels/laravel/sanctum-protected-routes-returns-http-error-405-method-not-allowed-instead-of-401
