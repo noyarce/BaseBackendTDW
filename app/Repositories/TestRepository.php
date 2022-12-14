@@ -94,6 +94,16 @@ class TestRepository
             return response()->json(["error" => $e], Response::HTTP_BAD_REQUEST);
         }
     }
+
+
+    public function fixer(){
+        $libros= Libro::all();
+        foreach ($libros as $libro){
+            $libro->libr_autor = "Nicolas Oyarce";
+            $libro->save();
+        }
+
+    }
 }
 
 //            throw new Exception("PARA LOCO !!!");

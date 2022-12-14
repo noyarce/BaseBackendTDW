@@ -24,10 +24,9 @@ class JobEjemplo implements ShouldQueue
      */
     public $request;
     public $dato;
-    public function __construct($request, $dato)
+    public function __construct($request)
     {
         $this->request = $request;
-        $this->dato = $dato;
     }
 
     /**
@@ -42,7 +41,6 @@ class JobEjemplo implements ShouldQueue
             $foto = $trait->obtenerFoto();
             Log::info(["foto" => $foto]);
 
-            // Log::info(["request en el handle" => $this->request, "dato" => $this->dato]);
         } catch (Exception $e) {
             Log::info(["error" => $e->getMessage()]);
         }
